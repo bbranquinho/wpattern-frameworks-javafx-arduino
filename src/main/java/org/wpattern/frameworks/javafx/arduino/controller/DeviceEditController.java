@@ -72,6 +72,10 @@ public class DeviceEditController implements IController {
 	@FXML
 	private void handleOk() {
 		if (this.isInputValid()) {
+			if (this.device == null) {
+			this.device = new DeviceEntity();
+			}
+			
 			this.device.setName(this.nameField.getText());
 			this.device.setDescription(this.descriptionField.getText());
 			this.device.setRate(this.rateCombo.getValue());

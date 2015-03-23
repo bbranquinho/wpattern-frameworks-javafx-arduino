@@ -32,32 +32,12 @@ CREATE TABLE IF NOT EXISTS `wpattern_javafx_arduino`.`tb_device` (
   `name` VARCHAR(45) NOT NULL,
   `description` VARCHAR(127) NULL,
   `port` VARCHAR(6) NOT NULL,
-  `rate_id` INT NOT NULL,
+  `rate_id` INT NULL,
   PRIMARY KEY (`pk_id`),
   INDEX `fk_tb_device_tb_rate1_idx` (`rate_id` ASC),
   CONSTRAINT `fk_tb_device_tb_rate1`
     FOREIGN KEY (`rate_id`)
     REFERENCES `wpattern_javafx_arduino`.`tb_rate` (`pk_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `wpattern_javafx_arduino`.`tb_device_read`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `wpattern_javafx_arduino`.`tb_device_read` ;
-
-CREATE TABLE IF NOT EXISTS `wpattern_javafx_arduino`.`tb_device_read` (
-  `pk_id` INT NOT NULL AUTO_INCREMENT,
-  `value` VARCHAR(45) NOT NULL,
-  `date` TIMESTAMP NOT NULL,
-  `device_id` INT NOT NULL,
-  PRIMARY KEY (`pk_id`),
-  INDEX `fk_tb_device_reads_tb_device_idx` (`device_id` ASC),
-  CONSTRAINT `fk_tb_device_reads_tb_device`
-    FOREIGN KEY (`device_id`)
-    REFERENCES `wpattern_javafx_arduino`.`tb_device` (`pk_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
